@@ -1,0 +1,26 @@
+.mainMenu {
+    display: flex;
+    width: 100vw;
+    justify-content: center;
+    background-color: aqua;
+    height: 2rem;
+    &__item {
+        list-style: none;
+        color:blue;
+        text-decoration: none;
+        &:not(:last-child) {
+            margin-right: 1rem;
+        }
+
+    
+     
+    }
+    &__item.active {
+        color: rgb(128, 0, 64);
+    }
+
+    &__link {
+        
+        text-transform: uppercase;
+    }
+}
