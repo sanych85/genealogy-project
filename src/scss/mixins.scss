@@ -1,0 +1,28 @@
+@mixin commonFormStyles {
+   
+    width: 30rem;
+    height: 1.5rem;
+    margin: 0.5rem;
+    border-radius: 0.5rem;
+    position: relative;
+    &::placeholder {
+        position: absolute;
+        color:rgba(255, 255, 255, 0.616);
+        top: 1rem;
+        
+    }
+    &:focus::placeholder {
+        color: transparent;
+    }
+}
+
+@mixin commonLabelStyle {
+    display: none;
+
+}
+
+// @mixin pseudo-element($element) {
+//     &:not(:last-child) {
+//         margin: 1rem;
+//     }
+// }

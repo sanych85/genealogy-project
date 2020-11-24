@@ -1,24 +1,42 @@
-import React,{useState} from 'react'
-import CustomFormElem from "../CustomFormElem"
-const NewPersonForm = () => {
-    const [personForm, handleForm] =useState({name:'', description:'', year:''});
+import { validate } from "./validation";
+import React from "react";
+import { Field, reduxForm } from "redux-form";
+import  "./newPersonForm.scss";
+import CustomButton from "../CustomButton";
+
+const renderField = ({ type,placeholder,label,input,meta}) => {
+  console.log(meta)
+  const {touched, error,active,pristine} = meta;
+ 
+  return (
+  
     
-    const handleFormElem = (e)=> {
-        const elemName =e.target.name;
-        const value = e.target.value;
-        console.log(e.target.name)
+    <div className = "inputWrapper">
+      
+      <input  {...input} label ={label}  type= {type} placeholder = {placeholder} />
+      <label className = { (active)||(!active&&!pristine)?"fullLabel":"emptyLabel" } >{label}</label>
+      {touched &&
+        (error && !active && <span>{error}</span>) }
         
-        handleForm({...personForm, [elemName]:value})
-    }
-    console.log(personForm)
-    return (
+    </div>
+  
+  )
+};
 
-        <form action="">
-            <CustomFormElem type = "string" name="name" placeholder="name" value = {personForm.name} handleFormElem = {handleFormElem}></CustomFormElem>
-            <CustomFormElem type = "number" name="date" placeholder = "date" value = {personForm.date} handleFormElem = {handleFormElem}></CustomFormElem>
-            <CustomFormElem tagName = "textarea" name="description" placeholder = "enter description" value = {personForm.description} handleFormElem = {handleFormElem}></CustomFormElem>
-        </form>
-    );
-}
+const SyncValidationForm = ({ handleSubmit,pristine,submitting,reset,valid}) => {
 
-export default NewPersonForm;
+  return (
+    <form onSubmit={handleSubmit}>
+      <Field name ="name"  component={renderField} placeholder ="name"  type= "text"  label = "name"  />
+      <Field name= "year" component={renderField}  placeholder ="year"  type= "text"  label ="year"/>
+      {/* <CustomButton type = "submit"> Add  </CustomButton>  */}
+      <button className = "submitButton" type="button" disabled={!valid} onClick={reset}>Add</button>
+    </form>
+  );
+};
+
+export default reduxForm({
+  form: "syncValidation", // a unique identifier for this form
+  validate // <--- validation function given to redux-form
+})(SyncValidationForm);
+

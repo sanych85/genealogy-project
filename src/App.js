@@ -1,4 +1,4 @@
-import "./App.css";
+import "./App.scss";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import Home from "./Pages/Home/Home";
 import GenealogiaProject from "./Pages/GenealogiaProject/GenealogiaProject";
@@ -6,7 +6,7 @@ import Header from "./CommonComponents/Header";
 function App() {
   return (
     <BrowserRouter>
-      <div className="App">
+      <div className="app__wrapper">
       <Header/> 
       
 
