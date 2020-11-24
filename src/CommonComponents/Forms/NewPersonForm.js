@@ -30,7 +30,7 @@ const SyncValidationForm = ({ handleSubmit,pristine,submitting,reset,valid}) => 
       <Field name ="name"  component={renderField} placeholder ="name"  type= "text"  label = "name"  />
       <Field name= "year" component={renderField}  placeholder ="year"  type= "text"  label ="year"/>
       {/* <CustomButton type = "submit"> Add  </CustomButton>  */}
-      <button className = "submitButton" type="button" disabled={!valid} onClick={reset}>Add</button>
+      <button className = "submitButton" type="button" disabled={!valid} onClick={reset}>Addf</button>
     </form>
   );
 };
